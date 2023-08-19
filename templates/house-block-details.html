@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    /* Add your CSS styles here */
+    /* Example styles for animated search box with icon */
+    body {
+      background-color:#283856;
+      font-family: "Poppins";
+      display: top;
+      justify-content: center;
+      height: 100vh;
+      margin: 20;
+      
+    }
+    
+    .container {
+      margin-top:10vh;
+      margin-left:10px;
+      width: 94%;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #000;
+    }
+    
+    .search-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-family:"Poppins";
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .search-input:focus {
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .search-icon {
+      margin-right:12px;
+      color: #283856;
+      transition: transform 0.5s ease;
+    }
+    
+    .search-input:focus + .search-icon {
+      transform: scale(1.1);
+    }
+    
+    .search-button {
+      padding: 8px 15px;
+      font-size: 16px;
+      font-family: "Poppins";
+      background-color: #283856;
+      color: #ffffffba;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .search-button:hover {
+      background-color: #42c7d6ba;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Enter Block details to see all house details</h1>
+    
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="Enter your search query">
+      <i class="fas fa-search search-icon"></i>
+      <button type="button" class="search-button">Search</button>
+    </div>
+  </div>
+
+  <!-- Include Font Awesome for search icon -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
+

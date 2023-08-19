@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    /* Add your CSS styles here */
+    /* Example styles for the edit page */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 40;
+      padding: 20;
+      background-color: #283856
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffffba;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 10vh;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      font-weight: bold;
+    }
+    
+    input[type="text"] {
+      width: 95%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
+    select {
+            width: 98%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-family: "Poppins";
+            height: 40px; /* Adjust the height as needed */
+        }
+    
+    .edit-button {
+      padding: 8px 15px;
+      font-size: 16px;
+      background-color: #283856;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-style: "Poppins";
+    }
+    
+    .edit-section {
+      display: none;
+    }
+    
+    .edit-section.show {
+      display: block;
+    }
+  </style>
+  <script>
+    function toggleEdit() {
+      var editSection = document.getElementById("edit-section");
+      editSection.classList.toggle("show");
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Apartment Details</h1>
+    
+    <form method="POST" action="/edit_details">
+      <div class="form-group">
+        <label for="block">Block Name:</label>
+        <input type="text" id="block" name="block" placeholder="Enter the block name">
+      </div>
+      
+      <div class="form-group">
+        <label for="house_number">House Number:</label>
+        <input type="text" id="house_number" name="house_number" placeholder="Enter the house number">
+      </div>
+      
+      <div class="form-group">
+        <button type="button" class="edit-button" onclick="toggleEdit()">Edit Details</button>
+      </div>
+      
+      <div id="edit-section" class="edit-section">
+        <div class="form-group">
+          <label for="occupancy_status">Occupancy Status:</label>
+          <select id="occupancy_status" name="occupancy_status">
+            <option value="Occupied">Occupied</option>
+            <option value="Unoccupied">Unoccupied</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="owner_name">Owner Name:</label>
+          <input type="text" id="owner_name" name="owner_name" placeholder="Enter the new owner name">
+        </div>
+  
+        <div class="form-group">
+          <label for="ownership_status">Ownership Status:</label>
+          <select id="ownership_status" name="ownership_status">
+            <option value="Owned">Owned</option>
+            <option value="Rental">Rental</option>
+          </select>
+        </div>
+        
+        <!-- Additional input fields -->
+        <div class="form-group">
+          <label for="owner_tele">Owner Telephone:</label>
+          <input type="text" id="owner_tele" name="owner_tele" placeholder="Enter the owner telephone">
+        </div>
+  
+        <div class="form-group">
+          <label for="tenant_name">Tenant Name:</label>
+          <input type="text" id="tenant_name" name="tenant_name" placeholder="Enter the tenant name">
+        </div>
+  
+        <div class="form-group">
+          <label for="tenant_tele">Tenant Telephone:</label>
+          <input type="text" id="tenant_tele" name="tenant_tele" placeholder="Enter the tenant telephone">
+        </div>
+        
+        <div class="form-group">
+          <label for="maintenance_status">Maintenance Status:</label>
+          <select id="maintenance_status" name="maintenance_status">
+            <option value="Paid">Paid</option>
+            <option value="Unpaid">Unpaid</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="due_amount">Due Amount:</label>
+          <input type="text" id="due_amount" name="due_amount" placeholder="Enter the due amount">
+        </div>
+        
+        <div class="form-group">
+          <button type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color:#283856;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffffba;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dues-info {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-family: "Poppins";
+        }
+
+        .button-container {
+            display: block;
+            justify-content: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        button {
+            padding: 20px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background-color: #283856;
+            color: #ffffffba;
+            cursor: pointer;
+            font-family: "Poppins";
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffffffba;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Maintenance Dues</h1>
+        <div id="dues-info" class="dues-info">
+            <div class="button-container">
+                <a href="{{url_for('update')}}">
+                    <button>Update Maintenance for a house</button></a>
+            </div>
+            <div class="button-container">
+                <a href="{{url_for('reset')}}">
+                    <button>Reset Maintenance for the entire Apartment</button></a>
+            </div>
+            <div class="button-container">
+                <a href="{{url_for('get_defaulters')}}">
+                    <button>Generate Defaulters list</button></a>
+            </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+

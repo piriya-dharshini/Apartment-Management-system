@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body {
+      font-family: "Poppins";
+      background-color: #283856;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu {
+      background-color: #ffffffba;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      font-size: 25px;
+      width: 600px;
+      height: 800px;
+      max-width: 90%;
+    }
+
+    .menu-title {
+      font-size: 40px;
+      text-align: center;
+      margin: 0 0 40px;
+    }
+
+    .menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-item {
+      margin-bottom: 10px;
+    }
+
+    .menu-link {
+      display: block;
+      padding: 10px;
+      color: #000;
+      text-decoration: none;
+      background-color: #42c7d6ba;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .menu-link:hover {
+      background-color: #42c7d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <h1 class="menu-title">Flat Information Management Portal</h1>
+    <ul class="menu-list">
+      <li class="menu-item"><a href="{{url_for('blockname')}}" class="menu-link">View all blocks</a></li>
+      <li class="menu-item"><a href="{{url_for('searchinfo')}}" class="menu-link">Search for a block</a></li>
+      <li class="menu-item"><a href="{{url_for('add_house')}}" class="menu-link">Add a new house in a block</a></li>
+      <li class="menu-item"><a href="{{url_for('add_block')}}" class="menu-link">Add a new Block</a></li>
+      <li class="menu-item"><a href="{{url_for('delete_house')}}" class="menu-link">Remove a house from a block</a></li>
+      <li class="menu-item"><a href="{{url_for('edit_details')}}" class="menu-link">Edit Residential Details of a house</a></li>
+      <li class="menu-item"><a href="{{url_for('unoccupied_houses')}}" class="menu-link">View Unoccupied Houses</a></li>
+    </ul>
+  </div>
+</body>
+</html>

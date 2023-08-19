@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    /* Add your CSS styles here */
+    /* Example styles for house details */
+    body {
+      background-color: #283856;
+      font-family: "Poppins";
+      display: top;
+      justify-content: center;
+      height: 100vh;
+      margin: 20;
+    }
+    
+    .container {
+      width:93%;
+      padding: 20px;
+      background-color: #ffffffba;
+      margin-left: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      justify-content: center;
+      align-items:center
+    }
+    
+    h1 {
+      text-align: center;
+      color: #000;
+    }
+    
+    .search-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-family: "Poppins";
+      width:95%
+    }
+    
+    .search-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .search-input:focus {
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .search-icon {
+      margin-right: 12px;
+      color: #283856;
+      transition: transform 0.5s ease;
+    }
+    
+    .search-input:focus + .search-icon {
+      transform: scale(1.1);
+    }
+    
+    .search-button {
+      padding: 8px 15px;
+      font-size: 16px;
+      font-family: "Poppins";
+      background-color: #283856;
+      color: #000000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .search-button:hover {
+      background-color: #42c7d6ba;
+    }
+    
+    .house-details {
+      margin-bottom: 20px;
+      font-family: "Poppins";
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .house-details-item {
+      color: #000000;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .house-details hr {
+      border: none;
+      border-top: 1px solid #cccccc;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .house-details-item:first-child {
+      font-size: 18px;
+    }
+    
+    .house-details-item:nth-child(2) {
+      font-size: 16px;
+      color: #666666;
+    }
+    
+    .house-details-item:nth-child(3),
+    .house-details-item:nth-child(4) {
+      font-size: 14px;
+      color: #666666;
+    }
+    
+    .house-details-item:nth-child(5) {
+      margin-top: 10px;
+    }
+    
+    .house-details-item:nth-child(5),
+    .house-details-item:nth-child(8),
+    .house-details-item:nth-child(11),
+    .house-details-item:nth-child(14) {
+      font-size: 14px;
+      margin-left: 10px;
+    }
+    
+    .house-details-item:nth-child(6),
+    .house-details-item:nth-child(9),
+    .house-details-item:nth-child(12) {
+      margin-left: 20px;
+    }
+    
+    .house-details-item:nth-child(7),
+    .house-details-item:nth-child(10),
+    .house-details-item:nth-child(13) {
+      margin-left: 40px;
+    }
+    
+    .house-details-item:nth-child(15) {
+      margin-top: 10px;
+    }
+    
+    .house-details-item:nth-child(16),
+    .house-details-item:nth-child(17) {
+      margin-left: 10px;
+      font-size: 14px;
+      color: #666666;
+    }
+    
+    .no-results {
+      text-align: center;
+      color: #666666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Enter Block Name to See House Details</h1>
+    
+    <form method="POST" action="/house_info">
+      <div class="search-box">
+        <input type="text" name="block-name" class="search-input" placeholder="Enter block name">
+        <i class="fas fa-search search-icon"></i>
+        <button type="submit" class="search-button">Search</button>
+      </div>
+    </form>
+    
+    {% if house_details %}
+      <h2>House Details for Block: {{ block_name }}</h2>
+      {% for house in house_details %}
+        <div class="house-details">
+          <div class="house-details-item">House Number: {{ house[0] }}</div>
+          <div class="house-details-item">BHK: {{ house[1] }}</div>
+          <div class="house-details-item">Occupancy Status: {{ house[2] }}</div>
+          {% if house[2] == "Occupied" %}
+            <div class="house-details-item">Ownership Status: {{ house[3] }}</div>
+            {% if house[4] %}
+              <div class="house-details-item">Owner Name: {{ house[4] }}</div>
+              <div class="house-details-item">Owner Details:</div>
+              {% if house[5][0] %}
+                <div class="house-details-item">- Owner Telephone Number: {{ house[5][0] }}</div>
+              {% endif %}
+              {% if house[5][1] %}
+                <div class="house-details-item">- Tenant Name: {{ house[5][1] }}</div>
+              {% endif %}
+              {% if house[5][2] %}
+                <div class="house-details-item">- Tenant Telephone Number: {{ house[5][2] }}</div>
+              {% endif %}
+            {% endif %}
+            {% if house[6] %}
+              <div class="house-details-item">Maintenance Paid: {{ house[6][0] }}</div>
+              {% if house[6][1] %}
+                <div class="house-details-item">- Due Amount: {{ house[6][1] }}</div>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div>
+        <hr>
+      {% endfor %}
+    {% else %}
+      {% if block_name %}
+        <p class="no-results">No residential information logged for the block "{{ block_name }}"</p>
+      {% endif %}
+    {% endif %}
+    
+  </div>
+  
+  <!-- Include Font Awesome for search icon -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

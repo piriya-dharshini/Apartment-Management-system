@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color:#283856;
+        }
+
+        .container {
+            width:95%;
+            margin-top: 10vh;
+            margin-left: 10px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffffba;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size:18px
+        }
+
+        input[type="text"] {
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            padding: 8px 15px;
+            font-size: 20px;
+            background-color: #283856;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-style:"Poppins";
+        }
+
+        select {
+            width: 97%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Add House to Block</h1>
+    <form method="post">
+        <label for="block_name">Block Name:</label>
+        <input type="text" id="block_name" name="block_name" placeholder="Enter Block Name">
+
+        <label for="house_number">House Number:</label>
+        <input type="text" id="house_number" name="house_number" placeholder="Enter House Number">
+
+        <label for="bhk">BHK:</label>
+        <input type="text" id="bhk" name="bhk" placeholder="Enter BHK">
+
+        <label for="occupancy_status">Occupancy Status:</label>
+        <select id="occupancy_status" name="occupancy_status">
+            <option value="0">Unoccupied</option>
+            <option value="1">Occupied</option>
+        </select>
+
+        <label for="owner_name">Owner Name:</label>
+        <input type="text" id="owner_name" name="owner_name" placeholder="Enter Owner Name">
+
+        <label for="ownership_status">Ownership Status:</label>
+        <select id="ownership_status" name="ownership_status">
+            <option value="Owned">Owned</option>
+            <option value="Rental">Rental</option>
+        </select>
+
+        <label for="owner_telephone">Owner Telephone:</label>
+        <input type="text" id="owner_telephone" name="owner_telephone" placeholder="Enter Phone Number">
+
+        <label for="tenant_name">Tenant Name:</label>
+        <input type="text" id="tenant_name" name="tenant_name" placeholder="Enter Tenant Name">
+
+        <label for="tenant_telephone">Tenant Telephone:</label>
+        <input type="text" id="tenant_telephone" name="tenant_telephone" placeholder="Enter Tenant Phone Number">
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+</body>
+</html>

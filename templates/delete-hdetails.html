@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <style>
+        /* Add your CSS styles here */
+        /* Example styles for two search boxes */
+        body {
+            background-color: #283856;
+            font-family: "Poppins";
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffffba;
+            border-radius: 20px;
+            margin-top: 20vh;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-family: "Poppins";
+            padding: 10px;
+            color: #ffffffba;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            font-family: "Poppins";
+        }
+
+        .search-button {
+            padding: 8px 18px;
+            font-size: 16px;
+            background-color: #283856;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: "Poppins";
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffffba;
+            font-size: 40px;
+        }
+
+        .search-button[disabled] {
+            background-color: #283856;
+            cursor: not-allowed;
+            font-family: "Poppins";
+            word-spacing: normal;
+        }
+
+        .search-box:nth-child(2) {
+            opacity: 0.5;
+        }
+
+        .search-box:nth-child(2) input,
+        .search-box:nth-child(2) button {
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        function enableSearch() {
+            var input1 = document.getElementById("search-input1");
+            var input2 = document.getElementById("search-input2");
+            var button2 = document.getElementById("search-button2");
+
+            if (input1.value !== "") {
+                input2.disabled = false;
+                button2.disabled = false;
+                input2.focus(); // Set focus on the house number input
+
+                var searchBox2 = document.querySelector(".search-box:nth-child(2)");
+                searchBox2.style.opacity = "1";
+            } else {
+                input2.disabled = true;
+                button2.disabled = true;
+
+                var searchBox2 = document.querySelector(".search-box:nth-child(2)");
+                searchBox2.style.opacity = "0.5";
+            }
+        }
+
+        function deleteDetails() {
+            var input1 = document.getElementById("search-input1");
+            var input2 = document.getElementById("search-input2");
+
+            // Perform validation checks
+            if (input1.value === "") {
+                alert("Please enter the block name.");
+                return;
+            }
+
+            if (input2.value === "") {
+                alert("Please enter the house number.");
+                return;
+            }
+
+            // Simulating deletion process
+            // Replace this with your actual deletion logic
+            alert("House details successfully deleted!");
+        }
+
+        function handleEnterKey(event) {
+            if (event.keyCode === 13) {
+                enableSearch();
+            }
+        }
+    </script>
+</head>
+<body>
+  <h1>Delete House Details</h1>
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="search-input1" class="search-input" placeholder="Enter block name from which you want to delete" onkeyup="handleEnterKey(event)">
+            <button type="button" class="search-button" onclick="enableSearch()">Enter</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="search-input2" class="search-input" placeholder="Enter House number to delete" disabled>
+            <button type="button" id="search-button2" class="search-button" disabled onclick="deleteDetails()">Delete Details</button>
+        </div>
+    </div>
+</body>
+</html>

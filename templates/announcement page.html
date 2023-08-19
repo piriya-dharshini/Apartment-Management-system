@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-image: linear-gradient(
+        to bottom,
+        #ede0e8 0%,
+        #eeb170 50%,
+        #e47226 100%);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .announcement-form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-family: "Poppins";
+        }
+
+        input[type="radio"],
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-family: "Poppins";
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color:  #e47226;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .announcement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .announcement-item {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .announcement-item.private {
+            background-color: #ffdddd;
+        }
+
+        .announcement-item span {
+            font-weight: bold;
+            font-family: "Poppins";
+        }
+    </style>
+    <script>
+        function postAnnouncement() {
+            var announcementForm = document.getElementById("announcement-form");
+            var announcementType = document.querySelector('input[name="announcement-type"]:checked').value;
+            var announcementContent = document.getElementById("announcement-content").value;
+
+            var announcementList = document.getElementById("announcement-list");
+
+            var newAnnouncementItem = document.createElement("li");
+            newAnnouncementItem.classList.add("announcement-item");
+
+            if (announcementType === "private") {
+                newAnnouncementItem.classList.add("private");
+            }
+
+            var announcementHTML =
+                '<span>Announcement Type: ' + announcementType + '</span><br>' +
+                '<span>' + announcementContent + '</span>';
+
+            newAnnouncementItem.innerHTML = announcementHTML;
+            announcementList.appendChild(newAnnouncementItem);
+
+            announcementForm.reset();
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Announcement Page</h1>
+
+        <div class="announcement-form">
+            <h2>Post New Announcement</h2>
+            <form id="announcement-form" onsubmit="event.preventDefault(); postAnnouncement();">
+                <div>
+                    <input type="radio" id="public" name="announcement-type" value="public" checked>
+                    <label for="public">Public</label>
+                </div>
+                <div>
+                    <input type="radio" id="private" name="announcement-type" value="private">
+                    <label for="private">Private</label>
+                </div>
+                <div>
+                    <label for="announcement-content">Announcement Content:</label>
+                    <textarea id="announcement-content" required></textarea>
+                </div>
+                <button type="submit">Post Announcement</button>
+            </form>
+        </div>
+
+        <h2>Announcements</h2>
+        <ul class="announcement-list" id="announcement-list">
+            <!-- Existing announcements will be added here dynamically -->
+        </ul>
+    </div>
+</body>
+</html>
+
